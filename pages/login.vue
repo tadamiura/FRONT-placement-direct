@@ -28,13 +28,6 @@
               </button>
             </div>
           </form>
-
-          <div class="has-text-centered" style="margin-top: 20px">
-            <p>
-              Avez-vous un compte ?
-              <nuxt-link to="/register">S'inscrire</nuxt-link>
-            </p>
-          </div>
         </div>
       </div>
     </div>
@@ -45,25 +38,25 @@
 export default {
   data() {
     return {
-      email: '',
-      password: '',
-      error: ''
-    }
+      email: "",
+      password: "",
+      error: ""
+    };
   },
   methods: {
     async login() {
-        try {
-            await this.$auth.loginWith('local', {
-                data: {
-                    email: this.email,
-                    password: this.password
-                }
-            })
-            this.$router.push('/')
-        } catch (e) {
-            this.error = e.response.data.message
-        }
+      try {
+        await this.$auth.loginWith("local", {
+          data: {
+            email: this.email,
+            password: this.password
+          }
+        });
+        this.$router.push("/");
+      } catch (e) {
+        this.error = e.response.data.message;
+      }
     }
   }
-}
+};
 </script>

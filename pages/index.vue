@@ -20,7 +20,7 @@ export default {
   mounted() {
   },
   async asyncData({ $axios, $auth }) {
-    let user = $auth.state.user
+    let user = $auth.$state.user
     const contracts = await $axios.$get(
       `http://localhost:8080/api/user/${user}/contract`
     )

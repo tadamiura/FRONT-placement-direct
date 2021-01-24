@@ -40,8 +40,33 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
-
+  axios: {
+    baseURL: 'http://localhost:8080/api'
+  },
+  router: {
+    // middleware: ['loggedIn']
+  },
+  auth: {
+    // localStorage: false,
+    // cookie: {
+    //   prefix: 'auth.',
+    //   options: {
+    //     path: '/',
+    //     maxAge: 10800
+    //   }
+    // },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth', method: 'post', propertyName: 'token' },
+          logout: false,
+          user: { url: '/user', method: 'get', propertyName: 'user' }
+        },
+        // tokenType: ''
+      }
+    },
+    // plugins: ['~/plugins/axios.js', { src: '~/plugins/auth.js', mode: 'client' }]
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
